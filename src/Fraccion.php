@@ -7,8 +7,13 @@ class Fraccion{
 
     public function __construct(int $numerador, int $denominador)
     {
-        $this->numerador = $numerador;
-        $this->denominador = $denominador;
+        if(!($numerador == 0 || $denominador == 0)){
+            $this->numerador = $numerador;
+            $this->denominador = $denominador;
+        }else{
+            $this->numerador = 0;
+            $this->denominador = 1;
+        }
         
     }
 
@@ -68,6 +73,7 @@ class Fraccion{
      */
     public static function DividirrFr(object $obj1, object $obj2){
         if($obj1 instanceof Fraccion && $obj2 instanceof Fraccion){
+            if($obj2->FraccionResult($obj2) == 0) return 0;
             $resultado = $obj1->FraccionResult($obj1) / $obj2->FraccionResult($obj2);
             return $resultado;
         }
@@ -75,9 +81,5 @@ class Fraccion{
     }
 
 }
-
-$obj1 = new Fraccion(3,7);
-$obj2 = new Fraccion(5,8);
-echo $resultado = Fraccion::RestaFr($obj1,$obj2);
 
 ?>

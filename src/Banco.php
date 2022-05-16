@@ -2,7 +2,8 @@
 namespace ITEC\DAW\Clases;
 
 class Banco{
-    private static int $numcuenta = 0;
+    private static int $IDCliente = 0;
+    private int $numcuenta = 0;
     private string $cliente;
     private int $saldo;
     private static array $listaClientes = [];
@@ -18,11 +19,11 @@ class Banco{
     }
 
     private static function asignarIDCliente(){
-         return Banco::$numcuenta++;
+         return Banco::$IDCliente++;
     }
 
     private function addToListClient(){
-        return Banco::$listaClientes[self::$numcuenta] = $this;
+        return Banco::$listaClientes[self::$IDCliente] = $this;
     }
 
     public static function showList(){
@@ -34,7 +35,7 @@ class Banco{
      * @param int $ingreso
      */
     public function addIngreso(int $ingreso){
-        $this->saldo += $ingreso;
+        return $this->saldo += $ingreso;
     }
 
     /**
@@ -42,9 +43,10 @@ class Banco{
      * @param int $retiro
      */
     public function takeRetiro(int $retiro){
-        $this->saldo > $retiro ? $this->saldo -= $retiro : $this->saldo = 0;
+        return $this->saldo > $retiro ? $this->saldo -= $retiro : $this->saldo = 0;
         
     }
+
 
 
     public static function MoneyInTheBank(){
@@ -57,8 +59,15 @@ class Banco{
     {
         return "Cliente: " . $this->cliente . ". Numcuenta: " . $this->numcuenta .". Saldo: " . $this->saldo ."\n";
     }
-}
 
+    public function getCliente(){
+        return $this->cliente;
+    }
+    public function getSaldo(){
+        return $this->saldo;
+    }
+}
+/*
 $cli0 = new Banco("Sergio", 100);
 echo $cli0;
 $cli00 = new Banco("Juan", 1000);
@@ -74,5 +83,5 @@ echo $cli1;
 print_r(Banco::showList());
 
 echo Banco::MoneyInTheBank();
-
+*/
 ?>

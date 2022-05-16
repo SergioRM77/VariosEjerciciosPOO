@@ -32,11 +32,6 @@ class Fecha{
         return $this;
     }
 
-    public function getDateLeft() {
-        $now = new \DateTime();
-        return $now->diff($this->validarFecha)->format("j");
-    }
-
     public function DiaSiguiente(){
         //forma1
         $interval = \DateInterval::createFromDateString('+1 day');
@@ -46,10 +41,10 @@ class Fecha{
         //return $this->validarFecha->add(new DateInterval('P1D'))->format('j/n/Y');
     }
 }
-
+/*
 $fecha= new Fecha(20,5,2005);
 echo $fecha;
 echo $fecha->DiaSiguiente();
 var_dump( $fecha->is_validDate());
-echo $fecha;
+echo $fecha;*/
 ?>

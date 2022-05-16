@@ -18,6 +18,9 @@ class NIF{
         if(strlen(strval($Nif))==8){
             $this->Nif = $Nif;
             $this->letra = $this->calcularLetra($Nif);
+        }else{
+            $this->Nif = 0;
+            $this->letra = 'XX';
         }
     }
 
@@ -76,18 +79,13 @@ class NIF{
         return $this->Nif . $this->letra;
     }
 
-    public function ChangeNumber(int $num){
-        if(isset($this) == false && strlen(strval($num))==8){
-            $this->Nif = $num;
-            $this->letra = $this->calcularLetra($num);
+    public function setNumber(int $num){
+        if(strlen(strval($num))==8){
+            self::__construct($num);
+            //$this->Nif = $num;
+            //$this->letra = $this->calcularLetra($num);
         }
     }
 }
-$dni = new NIF(25608320);
-var_dump($dni);
-//var_dump($dni->is_validLetra("n"));
-$dni->ChangeNumber(25608321);
-var_dump($dni);
-//$dni->ChangeNumber(12121212);
-//var_dump($dni);
+
 ?>
